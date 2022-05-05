@@ -2,6 +2,21 @@
 #include "Biblioteca.h"
 #endif
 
+/*! \mainpage <CENTER> L'esercizio più bello del mondo </CENTER>
+    * \author <B> Fatone Simone </B>
+    * \version <B> V2.0 </B>
+    * \date <B> Consegna progetto: 05/05/2022 </B>
+    * 
+    * \section caratteristiche CARATTERISTICHE DEL PROGETTO
+    *
+    *  Il software permette di:
+    * - Inserire un nuovo libro 
+    * - Visualizzare l’intero catalogo della biblioteca
+    * - Cancellare un libro
+    * - Ricercare un particolare libro
+    * - Effettuare delle modifiche
+    */
+
 void MessAvv()
 {
 	clrscr();
