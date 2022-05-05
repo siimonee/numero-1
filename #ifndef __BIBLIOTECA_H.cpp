@@ -19,19 +19,15 @@
 
 void MessAvv()
 {
-   cout<<"\n\n     ----------------------------------------------------------------------    \r\n");
-   cout<<"     |                                                                    |    \r\n");
-   cout<<"     | AVVISO :                                                           |    \r\n");
-   cout<<"     |                                                                    |    \r\n");
-	cout<<"     | Gli archivi degli studenti e degli impiegati vengono memorizzati   |    \r\n");
-   cout<<"     | su due singoli file (uno per gli studenti = studenti  ed uno per   |    \r\n");
-   cout<<"     | gli impiegati = impieg), per quanto riguarda l'archivio dei libri  |    \r\n");
-   cout<<"     | i dati vengono memorizzati su un file calcolato in base al titolo  |    \r\n");
-   cout<<"     | del libro.(dunque il file non e' unico come per gli studenti/imp)  |    \r\n");
-   cout<<"     | Ogni qualvolta si effettuera'un operazione su l'archivio dei libri |    \r\n");
-   cout<<"     | verra' visualizzato il file del libro in questione.                |    \r\n");
-   cout<<"     |                                                                    |    \r\n");
-   cout<<"     ----------------------------------------------------------------------    \r\n");
+   cout<<"\n\n ----------------------------------------------------------------------    \r\n";
+   cout<<"     |                                                                    |    \r\n";
+   cout<<"     | AVVISO :                                                           |    \r\n";
+   cout<<"     |                                                                    |    \r\n";
+   cout<<"     | Questa biblioteca dovrebbe essere seria.                           |    \r\n";
+   cout<<"     | gli impiegati = impieg), per quanto riguarda l'archivio dei libri  |    \r\n";
+   cout<<"     | i dati vengono memorizzati su un file calcolato in base al titolo  |    \r\n";
+   cout<<"     | del libro.(dunque il file non e' unico come per gli studenti/imp)  |    \r\n";
+   cout<<"     ----------------------------------------------------------------------    \r\n";
   
    cout<<"\n\nPremi un tasto per proseguire.";
    getch();
@@ -412,7 +408,7 @@ void SceltaLibri()
      			Formtext("modifica dati di un libro",'*');
             Archivio.Carica();
             Archivio.Modifica();
-            cout<<"\n\nFine modifica";
+            cout<<"\n\n Fine modifica";
 				Formtext("",'*');
             getch();
          }break;
@@ -430,16 +426,16 @@ void SceltaLibri()
          {
          	clrscr();
 				Formtext("visualizzazione dell'intero archivio dei libri",'*');
-            cout<<"\nLettura files in corso...";
+            cout<<"\n Lettura files in corso...";
             Archivio.Visualizza();
-            cout<<"\n\nFine dell' archivio libri";
+            cout<<"\n\n Fine dell' archivio libri";
 				Formtext("",'*');
             getch();
          }break;
          case 'p': test=true; break;
          default :
          {
-         	cout<<"\nHai premuto un tasto non valido ...";
+         	cout<<"\n Hai premuto un tasto non valido ...";
             getch();
             test=false;
          }
@@ -474,7 +470,7 @@ void main()
         case 'q': exit(0);
         default :
         			 {
-                 	cout<<"\nHai premuto un tasto non valido ...";
+                 	cout<<"\n Hai premuto un tasto non valido ...";
                   getch();
 			       }
       };
