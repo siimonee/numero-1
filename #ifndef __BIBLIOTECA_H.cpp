@@ -2,22 +2,9 @@
 #include <string>
 using namespace std;
 
-/*! \mainpage <CENTER> L'esercizio più bello del mondo </CENTER>
-    * \author <B> Fatone Simone </B>
-    * \version <B> V2.0 </B>
-    * \date <B> Consegna progetto: 05/05/2022 </B>
-    * 
-    * \section caratteristiche CARATTERISTICHE DEL PROGETTO
-    *
-    *  Il software permette di:
-    * - Inserire un nuovo libro 
-    * - Visualizzare l’intero catalogo della biblioteca
-    * - Cancellare un libro
-    * - Ricercare un particolare libro
-    * - Effettuare delle modifiche
-    */
 struct libro
 {
+   int isbn;
 	string autore;
 	string titolo;
 	string editore;
@@ -45,9 +32,26 @@ void caricamento(libro tutto[], int n)
       cin>>tutto[i].pagine;
       cout<<"prezzo:";
       cin>>tutto[i].prezzo;
+      tutto[i].isbn=n;
       cout<<endl;
    }
 }
+
+void ricerca(libro tutto[], int n)
+   {
+      int codiceisbn;
+
+      cout<<"Inserire codice ISBN: ";
+      cin>>codiceisbn;
+
+      for(int i=0; i<n; i++)
+         {
+            if(codiceisbn==tutto[i].isbn)
+               {
+                  cout<<"AUTORE:"<<tutto[i].autore<<" "<<"TITOLO:"<<tutto[i].titolo<<" "<<"EDITORE:"<<tutto[i].editore<<" "<<"PAGINE:"<<tutto[i].pagine<<" "<<"PREZZO:"<<tutto[i].prezzo<<endl;
+               }
+         }
+   }  
 
 void ordineautore(libro tutto[],int n)
 {
@@ -97,7 +101,8 @@ int main()
     {
 		cout<<"1)VISUALIZZAZIONE DEI LIBRI IN ORDINE DI AUTORE"<<endl;
 		cout<<"2)VISUALIZZAZIONE DEI LIBRI IN ORDINE DI PREZZO"<<endl;
-		cout<<"3)ESCI"<<endl;
+        cout<<"3)RICERCA LIBRO TRAMITE CODICE ISBN"<<endl;
+		cout<<"4)ESCI"<<endl;
 		cin>>a;
 
 		if(a==1)
@@ -118,9 +123,14 @@ int main()
 		  }
 
         }
+      
+      if(a==3)
+      {
+         ricerca(tutto, n);
+      }
 
 
-     }while(a!=3);
+     }while(a!=4);
 
    cout<<"e' stato un piacere ordinare i libri insieme a te";
     return 0;
