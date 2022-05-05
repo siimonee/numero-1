@@ -1,6 +1,6 @@
 #ifndef __BIBLIOTECA_H
 #include "Biblioteca.h"
-#endif
+
 
 /*! \mainpage <CENTER> L'esercizio più bello del mondo </CENTER>
     * \author <B> Fatone Simone </B>
