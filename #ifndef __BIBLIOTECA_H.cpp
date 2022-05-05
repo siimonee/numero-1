@@ -1,6 +1,6 @@
-#ifndef __BIBLIOTECA_H
-#include "Biblioteca.h"
-
+#include <iostream>
+#include <string>
+using namespace std;
 
 /*! \mainpage <CENTER> L'esercizio più bello del mondo </CENTER>
     * \author <B> Fatone Simone </B>
@@ -16,463 +16,112 @@
     * - Ricercare un particolare libro
     * - Effettuare delle modifiche
     */
-
-void MessAvv()
+struct libro
 {
-   cout<<"\n\n ----------------------------------------------------------------------    \r\n";
-   cout<<"     |                                                                    |    \r\n";
-   cout<<"     | AVVISO :                                                           |    \r\n";
-   cout<<"     |                                                                    |    \r\n";
-   cout<<"     | Questa biblioteca dovrebbe essere seria.                           |    \r\n";
-   cout<<"     | gli impiegati = impieg), per quanto riguarda l'archivio dei libri  |    \r\n";
-   cout<<"     | i dati vengono memorizzati su un file calcolato in base al titolo  |    \r\n";
-   cout<<"     | del libro.(dunque il file non e' unico come per gli studenti/imp)  |    \r\n";
-   cout<<"     ----------------------------------------------------------------------    \r\n";
-  
-   cout<<"\n\nPremi un tasto per proseguire.";
-   getch();
+	string autore;
+	string titolo;
+	string editore;
+	int pagine;
+    int prezzo;
+};
+void scambia(libro &a, libro &b)
+{
+    libro appo=a;
+    a=b;
+    b=appo;
 }
 
-char StudMenu() 
+void caricamento(libro tutto[], int n)
 {
-   char scelta[5];
-	clrscr();
-   
-   cout<<"\n* 1. Inserisci nuovo studente "<<endl;
-   cout<<"\n* 2. Visualizza archivio studenti"<<endl;
-   cout<<"\n* 3. Ricerca informazioni su uno studente"<<endl;
-   cout<<"\n* 4. Modifica informazioni di uno studente"<<endl;
-   cout<<"\n* 5  Cancellazione di uno studente "<<endl;
-	cout<<"\n* 6. Pulizia del File archivio studenti "<<endl;
-   cout<<"\n* p. <-Pagina precedente"<<endl;
-  
-   cout<<"\n\nScelta..";
-   gets(scelta);
-   LowChar(scelta); 
-   return scelta[0];
-}
-
-char ImpMenu() 
-{
-   char scelta[5];
-	
-  
-   cout<<"\n* 1. Inserisci nuovo impiegato "<<endl;
-   cout<<"\n* 2. Visualizza archivio impiegati"<<endl;
-   cout<<"\n* 3. Ricerca informazioni su un impiegato"<<endl;
-   cout<<"\n* 4. Modifica informazioni di un impiegato"<<endl;
-   cout<<"\n* 5  Cancellazione di un impiegato "<<endl;
-   cout<<"\n* 6. Pulizia del File archivio impiegati "<<endl;
-   cout<<"\n* p. <-Pagina precedente"<<endl;
-   Formtext("",'*');
-   cout<<"\n\nScelta..";
-   gets(scelta);
-   LowChar(scelta);
-   return scelta[0];
-}
-
-char LibMenu()
-{
-   char scelta[5];
-	clrscr();
-   Formtext("menu-libri",'*');
-	cout<<"\n* 1. Prestito di un libro "<<endl;
-	cout<<"\n* 2. Restituzione di un libro "<<endl;
-   cout<<"\n* 3. Inserisci nuovo libro "<<endl;
-   cout<<"\n* 4. Ricerca veloce per titolo "<<endl;
-	cout<<"\n* 5. Ricerca approfondita"<<endl;
-   cout<<"\n* 6. Modifica i dati di un libro"<<endl;
-   cout<<"\n* 7  Cancellazione di un libro "<<endl;
-   cout<<"\n* 8. Visualizza tutti i libri dell'archivio"<<endl;
-	cout<<"\n* p. <-Pagina precedente"<<endl;
-	Formtext("",'*');
-   cout<<"\n\nScelta..";
-   
-   return scelta[0];
-}
-
-char SearchMenu() 
-{
-   char scelta[5];
-	clrscr();
-   Formtext("menu per la ricerca approfondita",'*');
-   cout<<"\n* 1. Ricerca per TITOLO + ISBN  "<<endl;
-   cout<<"\n* 2. Ricerca per TITOLO + AUTORE"<<endl;
-   cout<<"\n* 3. Ricerca per TITOLO + CASA EDITRICE "<<endl;
-   cout<<"\n* p. <- Pagina precedente"<<endl;
-	Formtext("",'*');
-   cout<<"\n\nScelta...";
-   
-   return scelta[0];
-}
-
-char MainMenu()
-{
-   char scelta[5];
-	clrscr();
-	Formtext("main-menu",'*');
-   cout<<"\n* 1. Archivio Studenti "<<endl;
-   cout<<"\n* 2. Archivio Impiegati"<<endl;
-   cout<<"\n* 3. Archivio Libri "<<endl;
-   cout<<"\n* q. Exit"<<endl;
-	Formtext("",'*');
-   cout<<"\n\nScelta...";
-   
-   return scelta[0];
-}
-
-void Login()
-{
-  
-  Impiegati miofile; 
-
-  int i=1; 
-  bool stato=false; 
-
-  while(i<4) 
-  {
-     clrscr();
-	  Formtext("",'*');
-     cout<<"\n\nAccesso al programma...  "<<i<<"/3"<<endl<<endl;
-     stato=miofile.Login();
-	  if(stato==true)
-	  {
-  		cout<<"\n\nImpiegato connesso... ";
-		Formtext("",'*');
-      getch();
-      i=4;
-	  }
-     i++;
-
-  }
-
-  if(stato==false) exit(0);
-
-}  
-
-void SceltaStudenti() 
-{
-	Studenti miofile;  
-   bool test=false;   
-
-   do
+   for(int i=0;i<n;i++)
    {
-   	switch(StudMenu())
+      cout<<"autore:";
+      cin>>tutto[i].autore;
+      cout<<"titolo:";
+      cin>>tutto[i].titolo;
+      cout<<"editore:";
+      cin>>tutto[i].editore;
+      cout<<"pagine:";
+      cin>>tutto[i].pagine;
+      cout<<"prezzo:";
+      cin>>tutto[i].prezzo;
+      cout<<endl;
+   }
+}
+
+void ordineautore(libro tutto[],int n)
+{
+
+   for(int i=0;i<n-1;i++)
+   {
+      for (int j=i+1;j<n;j++)
       {
-      	clrscr();
-      	case '1': 
-	      {
-   	   	clrscr();
-          	Formtext("inserimento dati studenti",'*');
-	         miofile.Inserisci();
-   	      cout<<"\n\nInserimento dello studente effettuato con successo";
-      	 	
-         }break;
-         case '2': 
+         if (tutto[i].autore>tutto[j].autore)
          {
-	         clrscr();
-          	Formtext("visualizzazione dell'archivio studenti",'*');
-      	   miofile.Visualizza();
-         	cout<<"\n\nFine dell' archivio studenti";
-				Formtext("",'*');
-   	      getch();
-         }break;
-         case '3': 
-         {
-      	   clrscr();
-          	Formtext("Ricerca dati di uno studente",'*');
-   	      miofile.Ricerca();
-				cout<<"\n\nFine ricerca";
-				Formtext("",'*');
-      	   getch();
-         }break;
-         case '4': 
-			{
-	         clrscr();
-          	Formtext("modifica dati di uno studente",'*');
-            cout<<endl;
-      	   miofile.Modifica();
-				cout<<"\n\nFine modifica";
-				Formtext("",'*');
-   	      getch();
-         }break;
-         case '5':  
-         {
-         	clrscr();
-          	Formtext("cancellazione di uno studente",'*');
-            miofile.Cancella();
-				cout<<"\n\nFine cancellazione";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '6': 
-         {
-          	clrscr();
-          	Formtext("pulizia dell'archivio studenti",'*');
-            miofile.Pulisci();
-				cout<<"\n\nFine pulizia archivio";
-				Formtext("",'*');
-            getch();
-         }break;
-			case 'p': test=true; break;
-			default :
-        	{
-             cout<<"\nHai premuto un tasto non valido ...";
-             getch();
-             test=false;
+
+            scambia(tutto[i],tutto[j]);
          }
-      };
-	}while(test==false);
-}
-
-void SceltaImpiegati()
-{
-	Impiegati miofile;
-   bool test=false;
- do
- {
-   switch(ImpMenu())
-   {
-   	clrscr();
-      case '1': 
-      {
-      	clrscr();
-        	Formtext("inserimento dati impiegati",'*');
-         miofile.Inserisci();
-         cout<<"\n\nInserimento dell' impiegato effettuato con successo";
-			Formtext("",'*');
-         getch();
-      }break;
-      case '2':  
-      {
-      	clrscr();
-			Formtext("visualizzazione dell'archivio impiegati",'*');
-         miofile.Visualizza();
-         cout<<"\n\nFine dell' archivio impiegati";
-			Formtext("",'*');
-         getch();
-      }break;
-      case '3':  
-      {
-      	clrscr();
-       	Formtext("ricerca dati di un impiegato",'*');
-         miofile.Ricerca();
-         cout<<"\n\nFine ricerca";
-			Formtext("",'*');
-         getch();
-      }break;
-      case '4':  
-      {
-      	clrscr();
-       	Formtext("modifica dati di un impiegato",'*');
-         miofile.Modifica();
-         cout<<"\n\nFine modifica";
-			Formtext("",'*');
-         getch();
-      }break;
-      case '5':   
-      {
-      	clrscr();
-        	Formtext("cancellazione di un impiegato",'*');
-         miofile.Cancella();
-         cout<<"\n\nFine cancellazione";
-			Formtext("",'*');
-         getch();
-      }break;
-      case '6':   
-      {
-      	clrscr();
-	     	Formtext("pulizia dell'archivio impiegati",'*');
-         miofile.Pulisci();
-         cout<<"\n\nFine pulizia archivio";
-			Formtext("",'*');
-         getch();
-      }break;
-      case 'p': test=true; break;
-      default :
-      {
-      	cout<<"\nHai premuto un tasto non valido ...";
-         getch();
-         test=false;
       }
-   };
- }while(test==false);
+   }
 }
 
-void SceltaSearchMenu() 
+
+void ordineprezzo(libro tutto[],int n)
 {
-  	bool test;
-	do
+
+   for(int i=0;i<n-1;i++)
    {
-   test=false;
+      for (int j=i+1;j<n;j++)
+      {
+         if (tutto[i].prezzo<tutto[j].prezzo)
+         {
 
-   Libri Archivio;
-   	switch(SearchMenu())
-   	{
-      	case '1': 
-         {
-         	clrscr();
-	        	Formtext("ricerca dati di un libro",'*');
-            Archivio.Carica();
-            Archivio.RicercaI();
-            cout<<"\n\nFine ricerca";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '2': 
-         {
-         	clrscr();
-           	Formtext("ricerca dati di un libro",'*');
-            Archivio.Carica();
-            Archivio.RicercaNa();
-            cout<<"\n\nFine ricerca";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '3':  
-         {
-         	clrscr();
-           	Formtext("ricerca dati di un libro",'*');
-            Archivio.Carica();
-            Archivio.RicercaCe();
-            cout<<"\n\nFine ricerca";
-				Formtext("",'*');
-            getch();
-         }break;
-         case 'p': test=true; break;
-         default :
-         {
-         	cout<<"\nHai premuto un tasto non valido ...";
-            getch();
-            test=false;
+            scambia(tutto[i],tutto[j]);
          }
-      };
-   }while(test==false);
+      }
+   }
 }
 
-void SceltaLibri()
+int main()
 {
-	bool test=false;
-   do
-   {
-   Libri Archivio;
-   	switch(LibMenu())
-      {
-      	clrscr();
-         case '1':  
-         {
-         	clrscr();
-     			Formtext("prestito di un libro",'*');
-            Archivio.Carica();
-            Archivio.Noleggia();
-            cout<<"\n\nFine prestito";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '2':  
-         {
-         	clrscr();
-     			Formtext("restituzione di un libro",'*');
-            Archivio.Carica();
-            Archivio.Restituisci();
-            cout<<"\n\nFine prestito";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '3': 
-         {
-         	clrscr();
-     			Formtext("inserimento dati libri",'*');
-            Archivio.Inserisci();
-            cout<<"\n\nInserimento del libro effettuato con successo";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '4':   
-         {
-         	clrscr();
-     			Formtext("ricerca dati di un libro",'*');
-            Archivio.Carica();
-            Archivio.RicercaT();
-            cout<<"\n\nFine ricerca";
-				Formtext("",'*');
-            getch();
-         }break;
-      	case '5':  
-         {
-         	SceltaSearchMenu();
-         }break;
-         case '6': 
-         {
-         	clrscr();
-     			Formtext("modifica dati di un libro",'*');
-            Archivio.Carica();
-            Archivio.Modifica();
-            cout<<"\n\n Fine modifica";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '7':  
-         {
-         	clrscr();
-     			Formtext("cancellazione di un libro",'*');
-            Archivio.Carica();
-            Archivio.Cancella();
-            cout<<"\n\nFine cancellazione";
-				Formtext("",'*');
-            getch();
-         }break;
-         case '8':  
-         {
-         	clrscr();
-				Formtext("visualizzazione dell'intero archivio dei libri",'*');
-            cout<<"\n Lettura files in corso...";
-            Archivio.Visualizza();
-            cout<<"\n\n Fine dell' archivio libri";
-				Formtext("",'*');
-            getch();
-         }break;
-         case 'p': test=true; break;
-         default :
-         {
-         	cout<<"\n Hai premuto un tasto non valido ...";
-            getch();
-            test=false;
-         }
-      };
-   }while(test==false);
-}
+    int n=3;
+    int a;
+    libro tutto[3];
+
+    cout<<"INSERISCI AUTORE,TITOLO,EDITORE,PAGINE,PREZZO DI UN LIBRO"<<endl;
+
+    caricamento(tutto,n);
 
 
-void main()
-{
-  MessAvv();
-  clrscr();
-  Login();
-  do{
-  		clrscr(); 
-      switch(MainMenu())
-      {
-        case '1':
-                 {
-                 	SceltaStudenti();
-                 }break;
-        case '2':
-        			  {
-                  SceltaImpiegati();
-                 } break;
+    do
+    {
+		cout<<"1)VISUALIZZAZIONE DEI LIBRI IN ORDINE DI AUTORE"<<endl;
+		cout<<"2)VISUALIZZAZIONE DEI LIBRI IN ORDINE DI PREZZO"<<endl;
+		cout<<"3)ESCI"<<endl;
+		cin>>a;
 
-        case '3':
-        			 {
-                	SceltaLibri();
-			       } break;
+		if(a==1)
+		{
+		 ordineautore(tutto,n);
+		  for(int i=0;i<n;i++)
+		  {
+			cout<<"AUTORE:"<<tutto[i].autore<<" "<<"TITOLO:"<<tutto[i].titolo<<" "<<"EDITORE:"<<tutto[i].editore<<" "<<"PAGINE:"<<tutto[i].pagine<<" "<<"PREZZO:"<<tutto[i].prezzo<<endl;
+		  }
+		}
 
-        case 'q': exit(0);
-        default :
-        			 {
-                 	cout<<"\n Hai premuto un tasto non valido ...";
-                  getch();
-			       }
-      };
-    }while(1); 
+		if(a==2)
+		{
+		  ordineprezzo(tutto,n);
+		  for(int i=0;i<n;i++)
+		  {
+			cout<<"PREZZO:"<<tutto[i].prezzo<<" "<<"TITOLO:"<<tutto[i].titolo<<" "<<"EDITORE:"<<tutto[i].editore<<" "<<"PAGINE:"<<tutto[i].pagine<<" "<<"AUTORE:"<<tutto[i].autore<<endl;
+		  }
+
+        }
+
+
+     }while(a!=3);
+
+   cout<<"e' stato un piacere ordinare i libri insieme a te";
+    return 0;
 }
