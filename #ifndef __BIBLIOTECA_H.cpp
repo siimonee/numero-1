@@ -19,24 +19,20 @@
 
 void MessAvv()
 {
-	clrscr();
-	textcolor(RED);     
-   textbackground(CYAN);
-   cprintf("\n\n     ----------------------------------------------------------------------    \r\n");
-   cprintf("     |                                                                    |    \r\n");
-   cprintf("     | AVVISO :                                                           |    \r\n");
-   cprintf("     |                                                                    |    \r\n");
-	cprintf("     | Gli archivi degli studenti e degli impiegati vengono memorizzati   |    \r\n");
-   cprintf("     | su due singoli file (uno per gli studenti = studenti  ed uno per   |    \r\n");
-   cprintf("     | gli impiegati = impieg), per quanto riguarda l'archivio dei libri  |    \r\n");
-   cprintf("     | i dati vengono memorizzati su un file calcolato in base al titolo  |    \r\n");
-   cprintf("     | del libro.(dunque il file non e' unico come per gli studenti/imp)  |    \r\n");
-   cprintf("     | Ogni qualvolta si effettuera'un operazione su l'archivio dei libri |    \r\n");
-   cprintf("     | verra' visualizzato il file del libro in questione.                |    \r\n");
-   cprintf("     |                                                                    |    \r\n");
-   cprintf("     ----------------------------------------------------------------------    \r\n");
-   textcolor(LIGHTGRAY);
-   textbackground(BLACK);
+   cout<<"\n\n     ----------------------------------------------------------------------    \r\n");
+   cout<<"     |                                                                    |    \r\n");
+   cout<<"     | AVVISO :                                                           |    \r\n");
+   cout<<"     |                                                                    |    \r\n");
+	cout<<"     | Gli archivi degli studenti e degli impiegati vengono memorizzati   |    \r\n");
+   cout<<"     | su due singoli file (uno per gli studenti = studenti  ed uno per   |    \r\n");
+   cout<<"     | gli impiegati = impieg), per quanto riguarda l'archivio dei libri  |    \r\n");
+   cout<<"     | i dati vengono memorizzati su un file calcolato in base al titolo  |    \r\n");
+   cout<<"     | del libro.(dunque il file non e' unico come per gli studenti/imp)  |    \r\n");
+   cout<<"     | Ogni qualvolta si effettuera'un operazione su l'archivio dei libri |    \r\n");
+   cout<<"     | verra' visualizzato il file del libro in questione.                |    \r\n");
+   cout<<"     |                                                                    |    \r\n");
+   cout<<"     ----------------------------------------------------------------------    \r\n");
+  
    cout<<"\n\nPremi un tasto per proseguire.";
    getch();
 }
@@ -45,7 +41,7 @@ char StudMenu()
 {
    char scelta[5];
 	clrscr();
-   Formtext("menu-studenti",'*'); 
+   
    cout<<"\n* 1. Inserisci nuovo studente "<<endl;
    cout<<"\n* 2. Visualizza archivio studenti"<<endl;
    cout<<"\n* 3. Ricerca informazioni su uno studente"<<endl;
@@ -53,7 +49,7 @@ char StudMenu()
    cout<<"\n* 5  Cancellazione di uno studente "<<endl;
 	cout<<"\n* 6. Pulizia del File archivio studenti "<<endl;
    cout<<"\n* p. <-Pagina precedente"<<endl;
-   Formtext("",'*');
+  
    cout<<"\n\nScelta..";
    gets(scelta);
    LowChar(scelta); 
@@ -63,14 +59,14 @@ char StudMenu()
 char ImpMenu() 
 {
    char scelta[5];
-	clrscr();
-   Formtext("menu-impiegati",'*');
+	
+  
    cout<<"\n* 1. Inserisci nuovo impiegato "<<endl;
    cout<<"\n* 2. Visualizza archivio impiegati"<<endl;
    cout<<"\n* 3. Ricerca informazioni su un impiegato"<<endl;
    cout<<"\n* 4. Modifica informazioni di un impiegato"<<endl;
    cout<<"\n* 5  Cancellazione di un impiegato "<<endl;
-	cout<<"\n* 6. Pulizia del File archivio impiegati "<<endl;
+   cout<<"\n* 6. Pulizia del File archivio impiegati "<<endl;
    cout<<"\n* p. <-Pagina precedente"<<endl;
    Formtext("",'*');
    cout<<"\n\nScelta..";
@@ -95,8 +91,7 @@ char LibMenu()
 	cout<<"\n* p. <-Pagina precedente"<<endl;
 	Formtext("",'*');
    cout<<"\n\nScelta..";
-   gets(scelta);
-   LowChar(scelta);
+   
    return scelta[0];
 }
 
@@ -111,8 +106,7 @@ char SearchMenu()
    cout<<"\n* p. <- Pagina precedente"<<endl;
 	Formtext("",'*');
    cout<<"\n\nScelta...";
-   gets(scelta);
-   LowChar(scelta);
+   
    return scelta[0];
 }
 
@@ -127,8 +121,7 @@ char MainMenu()
    cout<<"\n* q. Exit"<<endl;
 	Formtext("",'*');
    cout<<"\n\nScelta...";
-   gets(scelta);
-   LowChar(scelta);
+   
    return scelta[0];
 }
 
@@ -177,8 +170,7 @@ void SceltaStudenti()
           	Formtext("inserimento dati studenti",'*');
 	         miofile.Inserisci();
    	      cout<<"\n\nInserimento dello studente effettuato con successo";
-      	 	Formtext("",'*');
-         	getch();
+      	 	
          }break;
          case '2': 
          {
