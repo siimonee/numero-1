@@ -88,7 +88,7 @@ void ordineprezzo(libro tutto[],int n)
 
 int main()
 {
-    int n=3;
+    int n=2;
     int a;
     libro tutto[3];
 
